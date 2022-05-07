@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="{% static 'js/clear.js' %}" async></script>
+    <script type="text/javascript" src="{% static 'js/model-update.js' %}" async></script>
+    <script type="text/javascript" src="{% static 'js/dropdown.js' %}" async></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/model-update.css' %}">
+    <title>{{ model.name }}</title>
+</head>
+<body>
+    <div class="main">
+        <h2>Редактирование модели</h2>
+
+        <div class="top-bar">
+            <a href="{% url 'home' %}"><button class="btn-inrow">Назад</button></a>
+            <div class="dropdown">
+                <button onclick="dropdownFunc()" class="dropbtn btn-inrow">Добавить поле</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a type="button"  onclick="open_desc()">Тех. описание</a> 
+                    <a type="button"  onclick="open_furniture()">Фурнитура</a>
+                    <a type="button"  onclick="open_proccesing()">Послед. обработки</a>
+                    <a type="button"  onclick="open_dublerin()">Расход дублерина</a>
+                    <a type="button" onclick="open_flizelin()">Расход флизелина</a> 
+                    <a type="button"  onclick="open_colors()">Цвета</a>
+                    <a type="button"  onclick="open_cloth_fact()">Расход ткани факт.</a>
+                    <a type="button"  onclick="open_cloth_comm()">Расход ткани комм.</a>
+                </div>
+            </div>
+            <a href="{% url 'add-image' model.id %}"><button class="btn-inrow">Редактировать фото</button></a>
+            <button class="btn-inrow" form="form-id" type="submit">Сохранить</button>
+        </div>
+        <div class="container">
+            <form method="post" id="form-id">
+                {% csrf_token %}
+                <div class="field-father">
+                    <div>
+                        <div class="field">
+                            <b>Название</b>{{form.name}} <br>
+                        </div>
+                        <div class="field">
+                            <b>Код модели</b>{{form.code}} <br>
+                        </div>
+                        <div class="field">
+                            <b>Размеры</b>{{form.sizes}} <br>
+                        </div>
+                        <div class="field" >
+                            <b>Ширина ткани</b>{{form.cloth_width}} <br>
+                        </div>
+                        <div class="field">
+                            <b>Ткань</b>{{form.cloth}} <br>
+                        </div>
+                        <div class="field" id="dublerin"> 
+                            <b>Расход дублерина</b>{{form.dublerin_cons}}
+                            <button type="button" class="clear btn-single" onclick="delete_dublerin()">Убрать</button>
+                        </div>
+                        <div class="field" id="flizelin">
+                            <b>Расход флизелина</b>{{form.flizelin_cons}}
+                            <button type="button" class="clear btn-single" onclick="delete_flizelin()">Убрать</button>
+                        </div>
+                        <div class="field" id="colors">
+                            <b>Цвета</b>{{form.colors}}
+                            <button type="button" class="clear btn-single" onclick="delete_colors()">Убрать</button>
+                        </div>
+                        <div class="field" id="cloth_fact">
+                            <b>Расход ткани фактический</b>{{form.cloth_cons_fact}}
+                            <button type="button" class="clear btn-single" onclick="delete_cloth_fact()">Убрать</button>
+                        </div>
+                        <div class="field" id="cloth_comm">
+                            <b>Расход ткани коммерческий</b>{{form.cloth_cons_comm}}
+                            <button type="button" class="clear btn-single" onclick="delete_cloth_comm()">Убрать</button>
+                        </div>
+                    </div>
+                    <div class="big-field-father">
+                        <div class="big-field" id="desc">
+                            <b>Тех. описание</b>{{form.desc}}
+                            <button type="button" class="clear btn-single" onclick="delete_desc()">Убрать</button>
+                        </div>
+                        <div class="big-field" id="furniture">
+                            <b>Фурнитура</b>{{form.furniture}}
+                            <button type="button" class="clear btn-single" onclick="delete_furniture()">Убрать</button>
+                        </div>
+                        <div class="big-field" id="proccesing">
+                            <b>Последовательность<br>обработки</b>{{form.proccesing}} 
+                            <button type="button" class="clear btn-single" onclick="delete_proccesing()">Убрать</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

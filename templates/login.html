@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход в систему</title>
+</head>
+<body>
+    <!-- <div id="logo"><img src="/logo_crop.png"></div> -->
+    <div class="auth-form">
+        <h3 id="login-h">Вход в систему</h3> <hr>
+        <form method="post" action="login">
+            {% csrf_token %}
+            <input type="text" placeholder="Логин" name="username">
+            <input type="password" placeholder="Пароль" name="password">
+            <button type="submit" class="btn-login">Вход</button>
+        </form>
+</body>
+</html>

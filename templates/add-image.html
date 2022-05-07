@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="{% static 'js/upload-file.js' %}" async></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/add-image.css' %}">
+    <title>{{model.name}}</title>
+</head>
+<body>
+    <div class="main">
+        <h2>{{model.name}}</h2>
+        <div class="top-bar">
+            <div>
+                <a href="{% url 'model-update' model.id %}"><button class="btn-inrow">Назад</button></a>
+            </div>
+            <div>
+                <form id="form-image" method="post" novalidate enctype="multipart/form-data"> {% csrf_token %}
+                    <input id="btn-upload" name="images" type="file" multiple hidden>
+                    <label class="btn-inrow" for="btn-upload">Загрузить</label>
+                    <br />
+                    {{form}}
+                </form>
+            </div>
+            <div>
+                <button class="btn-inrow" form="form-image" type="submit">Сохранить</button>
+            </div>
+            <div>
+                <a href="{% url 'delete-image' model.id %}"><button id="delete" class="btn-inrow">Удалить все фото</button></a>
+            </div>
+        </div>
+        <div class="chosen-files">
+            <span id="file-chosen">Фото не выбраны</span>
+            <span id="file-chosen1"></span>
+            <span id="file-chosen2"></span>
+            <span id="file-chosen3"></span>
+            <span id="file-chosen4"></span>
+            <span id="file-chosen5"></span>
+            <span id="file-chosen6"></span>
+            <span id="file-chosen7"></span>
+            <span id="file-chosen8"></span>
+            <span id="file-chosen9"></span>
+            <span id="file-chosen10"></span>
+            <span id="file-chosen11"></span>
+        </div>
+    </div>
+</body>
+</html>

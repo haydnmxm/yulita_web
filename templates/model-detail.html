@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/model-detail.css' %}">
+    <script type="text/javascript" src="{% static 'js/hide.js' %}" async></script>
+    <title>{{ model.name }}</title>
+</head>
+<body>
+    <div class="main">
+        <h1>Информация о модели</h1>
+        <div class="top-bar">
+            <a href="{% url 'home' %}"><button class="btn-inrow">Назад</button></a>
+            <a href="{% url 'model-update' model.id %}"><button class="btn-inrow">Редактировать</button></a>
+            <a href="{% url 'docx' model.id %}"><button class="btn-inrow">Скачать</button></a>
+            <a href="{% url 'delete-model' model.id %}"><button class="btn-inrow">Удалить</button></a>
+        </div>
+        <div class="model-container">
+            <div class="field">
+                <p>Название модели</p>
+                <p>{{ model.name }}</p>
+            </div>
+            <div class="field">
+                <p>Код модели</p>
+                <p>{{ model.code }}</p>
+            </div>
+            <div class="field">
+                <p>Размеры</p>
+                <p id="id_sizes">{{ model.sizes}}</p>
+            </div>
+            <div class="field">
+                <p>Ширина ткани</p>
+                <p id="id_cloth_width">{{ model.cloth_width }}</p>
+            </div>
+            <div class="field">
+                <p>Ткань</p>
+                <p id="id_cloth">{{ model.cloth }}</p>
+            </div>
+            <div class="field">
+                <p>Расход дублерина</p>
+                <p id="id_dublerin_cons">{{ model.dublerin_cons }}</p>
+            </div>
+            <div class="field">
+                <p>Расход флизелина</p>
+                <p id="id_flizelin_cons">{{ model.flizelin_cons }}</p>
+            </div>
+            <div class="field">
+                <p>Цвета</p>
+                <p id="id_colors">{{ model.colors }}</p>
+            </div>
+            <div class="field">
+                <p>Расход ткани фактический</p>
+                <p id="id_cloth_cons_comm">{{ model.cloth_cons_fact }}</p>
+            </div>
+            <div class="field">
+                <p>Расход ткани коммерческий</p>
+                <p id="id_cloth_cons_fact">{{ model.cloth_cons_comm }}</p>
+            </div>
+            <div class="field">
+                <p>Тех. описание</p>
+                <p>{{ model.desc }}</p>
+            </div>
+            <div class="field">
+                <p>Фурнитура</p>
+                <p>{{ model.furniture }}</p>
+            </div>
+            <div class="field">
+                <p>Последовательность обработки</p>
+                <p>{{ model.processing }}</p>
+            </div>
+             <div class="field">
+                <p>Дата создания модели</p>
+                <p>{{ model.date_added }}</p>
+            </div>
+            <div class="field">
+                <p>Дата последних изменений</p>
+                <p>{{ model.date_updated }}</p>
+            </div>
+
+            {% for img in model.image_set.all %}
+                <img src="{{img.image.url}}" class="" alt="..." style="width: 300px; height: 300px;">
+                {% empty %} <!-- Условие на случай если фотографий нет -->
+                    <p>Фото модели отсутствуют.</p>
+                    <br>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

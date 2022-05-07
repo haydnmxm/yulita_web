@@ -1,0 +1,97 @@
+.top-bar {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 110px 195px 245px 130px;
+}
+
+b {
+    color: white;
+}
+
+.field-father {
+    display: grid;
+    grid-template-columns: 40% 50%;
+    grid-gap: 10px
+}
+
+.field {
+    font-size: 18px;
+    display: grid;
+    margin-bottom: 9px;
+    grid-template-columns: 150px 400px 130px;
+}
+
+.big-field-father {
+    display: grid;
+    grid-gap: 10px;
+}
+
+.big-field {
+    display: grid;
+    grid-template-columns: 20% 65% 15%;
+    grid-gap: 10px;
+
+}
+
+.big-field textarea {   
+    font-size: 18px;
+    border-radius: 8px;
+    border: 0px;
+    padding: 1%;
+}
+
+.field input {
+    font-size: 18px;
+    border-radius: 8px;
+    border: 0px;
+    padding: 2%;
+}
+
+.clear {
+    margin-left: 20%;
+}
+
+
+
+/* Кнопка выпадающего списка */
+.dropbtn {
+    cursor: pointer;
+  }
+  
+  /* Кнопка выпадающего меню при наведении и фокусировке */
+  .dropbtn:hover, .dropbtn:focus {
+    cursor: pointer; 
+  }
+  
+  /* Контейнер <div> - необходим для размещения выпадающего содержимого */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+
+  }
+  
+  /* Выпадающее содержимое (скрыто по умолчанию) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    align-items: center;
+  }
+  
+  /* Ссылки внутри выпадающего списка */
+  .dropdown-content a {
+    padding: 4px 8px;
+    display: block;
+    padding: 7px;
+    align-items: center;
+  }
+  
+  /* Изменение цвета выпадающих ссылок при наведении курсора */
+  .dropdown-content a:hover {background-color: #ddd}
+  
+  /* Показать выпадающее меню (используйте JS, чтобы добавить этот класс .dropdown-content содержимого, когда пользователь нажимает на кнопку выпадающего списка) */
+  .show {display:block;}

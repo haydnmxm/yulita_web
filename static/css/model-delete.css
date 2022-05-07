@@ -1,0 +1,10 @@
+.top-bar {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 130px 195px;
+}
+
+p {
+    color: white;
+}

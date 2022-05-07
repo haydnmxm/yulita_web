@@ -1,0 +1,16 @@
+.top-bar {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 110px 145px 150px 155px;
+}
+
+.chosen-files {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chosen-files span {
+    color: white;
+}
