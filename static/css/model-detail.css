@@ -1,0 +1,19 @@
+.top-bar {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    grid-gap: 15px;
+    /* grid-template-columns: 290px 290px 160px 160px; */
+  }
+
+.field {
+    font-size: 18px;
+    display: grid;
+    grid-template-columns: 19% 78%;
+}
+
+p {
+    color: white;
+    font-size: 18px;
+}
+

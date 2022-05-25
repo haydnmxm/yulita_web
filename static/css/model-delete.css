@@ -1,0 +1,11 @@
+.top-bar {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    grid-gap: 15px;
+    /* grid-template-columns: 130px 195px; */
+}
+
+p {
+    color: white;
+}

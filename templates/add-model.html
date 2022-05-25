@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="{% static 'js/script.js' %}" async></script>
+    <script type="text/javascript" src="{% static 'js/dropdown.js' %}" async></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/add-model.css' %}">
+    <title>New Model</title>
+</head>
+<body>
+    <div class="main">
+    <h1>New Model</h1>
+
+    <div class="top-bar">
+        <a href="{% url 'home' %}"><button class="btn-inrow">Back</button></a>
+        <div class="dropdown">
+            <button onclick="dropdownFunc()" class="dropbtn btn-inrow"> Add new field  </button>
+            <div id="myDropdown" class="dropdown-content">
+                <a type="button"  onclick="open_desc()">Technical description</a> 
+                <a type="button"  onclick="open_furniture()">Accessories</a>
+                <a type="button"  onclick="open_proccesing()">Processing sequence</a>
+                <a type="button"  onclick="open_dublerin()">Dublerin consumption</a>
+                <a type="button" onclick="open_flizelin()">Flizelin Consumption</a> 
+                <a type="button"  onclick="open_colors()">Colors</a>
+                <a type="button"  onclick="open_cloth_fact()">Real fabric consumption</a>
+                <a type="button"  onclick="open_cloth_comm()">Commercial fabric consumption</a>
+            </div>
+        </div>
+        <button class="btn-inrow" form="form-id" type="submit">Submit</button>
+    </div>
+
+    <!-- след див можно удалить, он декоративный -->
+    <div class="container">
+        <form method="post" id="form-id">
+            {% csrf_token %}
+            <div class="field-father">
+                <div>
+                    <div class="field">
+                        <b>Name</b>{{form.name}} <br>
+                    </div>
+                    <div class="field">
+                        <b>Code</b>{{form.code}} <br>
+                    </div>
+                    <div class="field">
+                        <b>Sizes</b>{{form.sizes}} <br>
+                    </div>
+                    <div class="field" >
+                        <b>Cloth width</b>{{form.cloth_width}} <br>
+                    </div>
+                    <div class="field">
+                        <b>Fabric</b>{{form.cloth}} <br>
+                    </div>
+                    <div class="field" id="dublerin"> 
+                        <b>Dublerin consumption</b>{{form.dublerin_cons}}
+                        <button type="button" class="clear btn-single" onclick="delete_dublerin()">Remove</button>
+                    </div>
+                    <div class="field" id="flizelin">
+                        <b>Flizelin consumption</b>{{form.flizelin_cons}}
+                        <button type="button" class="clear btn-single" onclick="delete_flizelin()">Remove</button>
+                    </div>
+                    <div class="field" id="colors">
+                        <b>Colors</b>{{form.colors}}
+                        <button type="button" class="clear btn-single" onclick="delete_colors()">Remove</button>
+                    </div>
+                    <div class="field" id="cloth_fact">
+                        <b>Real fabric consumption</b>{{form.cloth_cons_fact}}
+                        <button type="button" class="clear btn-single" onclick="delete_cloth_fact()">Remove</button>
+                    </div>
+                    <div class="field" id="cloth_comm">
+                        <b>Comm. fabric consumption</b>{{form.cloth_cons_comm}}
+                        <button type="button" class="clear btn-single" onclick="delete_cloth_comm()">Remove</button>
+                    </div>
+                </div>
+                <div class="big-field-father">
+                    <div class="big-field" id="desc">
+                        <b>Technical description</b>{{form.desc}}
+                        <button type="button" class="clear btn-single" onclick="delete_desc()">Remove</button>
+                    </div>
+                    <div class="big-field" id="furniture">
+                        <b>Accessories</b>{{form.furniture}}
+                        <button type="button" class="clear btn-single" onclick="delete_furniture()">Remove</button>
+                    </div>
+                    <div class="big-field" id="proccesing">
+                        <b>Processing sequence</b>{{form.proccesing}} 
+                        <button type="button" class="clear btn-single" onclick="delete_proccesing()">Remove</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+</body>
+</html>

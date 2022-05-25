@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" async></script>
+    <script type="text/javascript" src="{% static 'js/search.js' %}" async></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <title>Database</title>
+</head>
+<body>
+    <h2>Models Database</h2>
+    <div class="top-bar">
+        <div>
+            <div class="search-bar" id="search">
+                    {% csrf_token %}
+                    <input class="search-name" id="search-input" type="text" placeholder="search by name"/>
+            </div>
+        </div>
+        <div>
+            <div class="code-search-bar" id="search">
+                    {% csrf_token %}
+                    <input class="search-code" id="code-search-input" type="text" placeholder="search by code"/>
+            </div>
+        </div>
+        <div>
+        <a href="{% url 'add-model' %}"><button class="btn-inrow">New Model</button></a>
+        </div>
+        <div>
+        <a href="{% url 'logout' %}"><button class="btn-inrow">Log Out</button></a>
+        </div>
+    </div>
+    <div id="holder-holder" class="">
+        <div class="model-holder" id="model-holder">
+            {% for object in objects %}
+                <div class="model" id="model-container">
+                    <div class="model-card">
+                        <b id="title">{{object.name}}</b>
+                        <p id="code">{{object.code}}</p>
+                        <a href="{% url 'model-detail' object.id %}"><button class="btn-single">Details</button></a>
+                    </div>
+                    <br>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="result-holder not-visible"" id="result-holder">
+    <div class="search-box" id="search-box">
+        <div class="err-msg">
+        </div>
+    </div>
+    </div>
+
+</body>
+</html>
